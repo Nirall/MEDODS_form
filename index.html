@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href = "index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuelidate@0.7.5/dist/vuelidate.min.js"></script>
+    <title>Form</title>
+  <body>
+    <div id = "app">
+      <h1>{{message}}</h1>
+      <p>
+        {{description}}
+      </p>
+      <input v-model = "message">
+      <img :src = "image" :alt = "altText">
+      <a :href = "link">More products like this</a>
+      <p v-if = "inStock > 10">In Stock</p>
+      <p v-else-if = "inStock < 10 && inStock > 0">Almost sold out</p>
+      <p v-else>Out of Stock</p>
+      <h3 v-show = "onSale">On Sale</p>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>
