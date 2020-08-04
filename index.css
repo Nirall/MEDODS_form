@@ -1,0 +1,10 @@
+.form__item {
+  width: 300px;
+  min-height: 50px;
+}
+.form__item label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

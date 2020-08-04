@@ -10,17 +10,7 @@
     <title>Form</title>
   <body>
     <div id = "app">
-      <h1>{{message}}</h1>
-      <p>
-        {{description}}
-      </p>
-      <input v-model = "message">
-      <img :src = "image" :alt = "altText">
-      <a :href = "link">More products like this</a>
-      <p v-if = "inStock > 10">In Stock</p>
-      <p v-else-if = "inStock < 10 && inStock > 0">Almost sold out</p>
-      <p v-else>Out of Stock</p>
-      <h3 v-show = "onSale">On Sale</p>
+      <my-form></my-form>
     </div>
   </body>
   <script src="index.js"></script>
