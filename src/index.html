@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href = "index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuelidate@0.7.5/dist/vuelidate.min.js"></script>
+    <title>Form</title>
+  <body>
+    <div id = "app">
+      <form class = "form" @submit.prevent="submit">
+        <div class = "form__title">
+          <h1>Анкета клиента</h1>
+        </div>
+        <div class = "form__content-wrapper">
+          <div class = "form__header">
+            Поля со знаком * обязательны для заполения
+          </div>
+          <main class = "form__content">
+            <div class = "form__block">
+              <h3>Данные клиента</h3>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Фамилия*:</span>
+                  <input type = "text" v-model.trim="$v.form.surname.$model">
+                </label>
+                <div v-if="$v.form.surname.$error && $v.form.surname.$dirty">
+                  <span class="form__error" v-if="!$v.form.surname.maxLength20">Количество символов не более 20 и не менее 2</span>
+                  <span class="form__error" v-else-if="!$v.form.surname.requiredCheck">Поле обязательно для заполнения</span>
+                  <span class="form__error" v-else-if="!$v.form.surname.textCheck">Допускается или латиница или кириллица</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Имя*:</span>
+                  <input type = "text" v-model.trim="$v.form.name.$model">
+                </label>
+                <div v-if="$v.form.name.$error && $v.form.name.$dirty">
+                  <span class="form__error" v-if="!$v.form.name.maxLength20">Количество символов не более 20 и не менее 2</span>
+                  <span class="form__error" v-else-if="!$v.form.name.requiredCheck">Поле обязательно для заполнения</span>
+                  <span class="form__error" v-else-if="!$v.form.name.textCheck">Допускается или латиница или кириллица</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Отчество:</span>
+                  <input type = "text" v-model="$v.form.patronymic.$model">
+                </label>
+                <div v-if="$v.form.patronymic.$error && $v.form.patronymic.$dirty">
+                  <span class="form__error" v-if="!$v.form.patronymic.maxLength20">Количество символов не более 20 и не менее 2</span>
+                  <span class="form__error" v-else-if="!$v.form.patronymic.textCheck">Допускается или латиница или кириллица</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Дата рождения*:</span>
+                  <input type = "text" v-model="$v.form.birthdate.$model">
+                </label>
+                <div v-if="$v.form.birthdate.$error && $v.form.birthdate.$dirty">
+                  <span class="form__error" v-if="!$v.form.birthdate.requiredCheck">Поле обязательно для заполнения</span>
+                  <span class="form__error" v-else-if="!$v.form.birthdate.dateCheck">Введите корректную дату в формате "ДД.ММ.ГГГГ"</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Номер телефона*:</span>
+                  <input type = "text" v-model="$v.form.phone.$model">
+                </label>
+                <div v-if="$v.form.phone.$error && $v.form.phone.$dirty">
+                  <span class="form__error" v-if="!$v.form.phone.requiredCheck">Поле обязательно для заполнения</span>
+                  <span class="form__error" v-else-if="!$v.form.phone.phoneCheck">Формат номера "7 – – – – – – – – – –"</span>
+                </div>
+              </div>
+              <div class = "form__block__item form__block__item__row">
+                <span>Пол:</span>
+                <label class = "form__label-wrapper">
+                  <input class = "form__radio" type = "radio" value = "Мужской" v-model = "form.sex">
+                  Мужской
+                </label>
+                <label class = "form__label-wrapper">
+                  <input class = "form__radio" type = "radio" value = "Женский" v-model = "form.sex">
+                  Женский
+                </label>
+              </div>
+              <div class = "form__block__item">
+                <div>Группа клиентов*:</div>
+                <div class = "form__block__item__options">
+                  <label class = "form__label-wrapper">
+                    <input type = "checkbox" class = "form__checkbox" value = "VIP" v-model = "$v.form.group.$model">
+                    VIP
+                  </label>
+                  <label class = "form__label-wrapper">
+                    <input type = "checkbox" class = "form__checkbox" value = "Проблемные" v-model = "$v.form.group.$model">
+                    Проблемные
+                  </label>
+                  <label class = "form__label-wrapper">
+                    <input type = "checkbox" class = "form__checkbox" value = "ОМС" v-model = "$v.form.group.$model">
+                    ОМС
+                  </label>
+                </div>
+                <div v-if="$v.form.group.$error && $v.form.group.$dirty">
+                  <span class="form__error" v-if="!$v.form.group.requiredCheck">Поле обязательно для заполнения</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  Лечащий врач:
+                  <select v-model = "form.doctor">
+                    <option disabled value = "">Выберите врача</option>
+                    <option>Иванов</option>
+                    <option>Захаров</option>
+                    <option>Чернышева</option>
+                  </select>
+                </label>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__label-wrapper">
+                  <input type = "checkbox" class = "form__checkbox" value = "false" v-model = "form.dontSendSMS">
+                  Не отправлять СМС
+                </label>
+              </div>
+            </div>
+            <div class = "form__block">
+              <h3>Адрес</h3>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Индекс:</span>
+                  <input type = "text" v-model.trim="$v.form.postcode.$model">
+                </label>
+                <div v-if="$v.form.postcode.$error && $v.form.postcode.$dirty">
+                  <span class="form__error" v-if="!$v.form.postcode.maxLength20">Количество символов не более 20 и не менее 2</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Страна:</span>
+                  <input type = "text" v-model.trim="$v.form.country.$model">
+                </label>
+                <div v-if="$v.form.country.$error && $v.form.country.$dirty">
+                  <span class="form__error" v-if="!$v.form.country.maxLength20">Количество символов не более 20 и не менее 2</span>
+                  <span class="form__error" v-else-if="!$v.form.country.textCheck">Допускается или латиница или кириллица</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Область:</span>
+                  <input type = "text" v-model.trim="$v.form.region.$model">
+                </label>
+                <div v-if="$v.form.region.$error && $v.form.region.$dirty">
+                  <span class="form__error" v-if="!$v.form.region.maxLength20">Количество символов не более 20 и не менее 2</span>
+                  <span class="form__error" v-else-if="!$v.form.region.textCheck">Допускается или латиница или кириллица</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Город*:</span>
+                  <input type = "text" v-model.trim="$v.form.city.$model">
+                </label>
+                <div v-if="$v.form.city.$error && $v.form.city.$dirty">
+                  <span class="form__error" v-if="!$v.form.city.maxLength20">Количество символов не более 20 и не менее 2</span>
+                  <span class="form__error" v-else-if="!$v.form.city.requiredCheck">Поле обязательно для заполнения</span>
+                  <span class="form__error" v-else-if="!$v.form.city.textCheck">Допускается или латиница или кириллица</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Улица:</span>
+                  <input type = "text" v-model.trim="$v.form.street.$model">
+                </label>
+                <div v-if="$v.form.street.$error && $v.form.street.$dirty">
+                  <span class="form__error" v-if="!$v.form.street.maxLength20">Количество символов не более 20 и не менее 2</span>
+                  <span class="form__error" v-else-if="!$v.form.street.textCheck">Допускается или латиница или кириллица</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Дом:</span>
+                  <input type = "text" v-model.trim="$v.form.house.$model">
+                </label>
+                <div v-if="$v.form.house.$error && $v.form.house.$dirty">
+                  <span class="form__error" v-if="!$v.form.house.houseCheck">Номер должен начинаться с цифры</span>
+                  <span class="form__error" v-else-if="!$v.form.house.maxLength15">Количество символов не более 15</span>
+                </div>
+              </div>
+            </div>
+            <div class = "form__block">
+              <h3>Документы</h3>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  Тип документа*:
+                  <select v-model = "$v.form.document.$model">
+                    <option disabled value = "">Выберите тип</option>
+                    <option>Паспорт</option>
+                    <option>Свидетельство о рождении</option>
+                    <option>Водит. удостоверение</option>
+                  </select>
+                </label>
+                <div v-if="$v.form.document.$error && $v.form.document.$dirty">
+                  <span class="form__error" v-if="!$v.form.document.requiredCheck">Поле обязательно для заполнения</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Серия:</span>
+                  <input type = "text" v-model.trim="$v.form.docSeries.$model">
+                </label>
+                <div v-if="$v.form.docSeries.$error && $v.form.docSeries.$dirty">
+                  <span class="form__error" v-if="!$v.form.docSeries.maxLength20">Количество символов не более 20 и не менее 2</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Номер:</span>
+                  <input type = "text" v-model.trim="$v.form.docNumber.$model">
+                </label>
+                <div v-if="$v.form.docNumber.$error && $v.form.docNumber.$dirty">
+                  <span class="form__error" v-if="!$v.form.docNumber.maxLength20">Количество символов не более 20 и не менее 2</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Кем выдан:</span>
+                  <input type = "text" v-model.trim="$v.form.docIssuedBy.$model">
+                </label>
+                <div v-if="$v.form.docIssuedBy.$error && $v.form.docIssuedBy.$dirty">
+                  <span class="form__error" v-if="!$v.form.docIssuedBy.maxLength20">Количество символов не более 20 и не менее 2</span>
+                  <span class="form__error" v-else-if="!$v.form.docIssuedBy.textCheck">Допускается или латиница или кириллица</span>
+                </div>
+              </div>
+              <div class = "form__block__item">
+                <label class = "form__block__item__row">
+                  <span>Дата выдачи*:</span>
+                  <input type = "text" v-model.trim="$v.form.docDateOfIssue.$model">
+                </label>
+                <div v-if="$v.form.docDateOfIssue.$error && $v.form.docDateOfIssue.$dirty">
+                  <span class="form__error" v-if="!$v.form.docDateOfIssue.requiredCheck">Поле обязательно для заполнения</span>
+                  <span class="form__error" v-else-if="!$v.form.docDateOfIssue.dateCheck">Введите корректную дату в формате "ДД.ММ.ГГГГ"</span>
+                </div>
+              </div>
+            </div>
+          </main>
+          <div class = "form__footer">
+            <button class = "form__btn" type="submit">Отправить</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>
