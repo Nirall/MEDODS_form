@@ -22,7 +22,8 @@
       transition: all 0.2s; }
     .form__radio:checked,
     .form__checkbox:checked {
-      --o: 1; }
+      --o: 1;
+      --bc: var(--green); }
     .form__radio:hover, .form__radio:focus,
     .form__checkbox:hover,
     .form__checkbox:focus {
