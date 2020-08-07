@@ -1,4 +1,4 @@
-# The MEDOED's test task
+# The MEDODS test task
 This form is created by Vuejs + Vuelidate + SASS without any libs.
 
 Vuejs and Vuelidate are connected by direct <script> including. SASS is installed via npm.
