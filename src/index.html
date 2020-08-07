@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href = "index.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>  -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuelidate@0.7.5/dist/vuelidate.min.js"></script>
     <title>Form</title>
   <body>
@@ -24,7 +25,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Фамилия*:</span>
-                  <input type = "text" v-model.trim="$v.form.surname.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.surname.$model"
+                    :class = "{ 'form__input__error': $v.form.surname.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.surname.$error && $v.form.surname.$dirty">
                   <span class="form__error" v-if="!$v.form.surname.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -35,7 +39,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Имя*:</span>
-                  <input type = "text" v-model.trim="$v.form.name.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.name.$model"
+                    :class = "{ 'form__input__error': $v.form.name.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.name.$error && $v.form.name.$dirty">
                   <span class="form__error" v-if="!$v.form.name.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -46,7 +53,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Отчество:</span>
-                  <input type = "text" v-model="$v.form.patronymic.$model">
+                  <input type = "text"
+                    v-model="$v.form.patronymic.$model"
+                    :class = "{ 'form__input__error': $v.form.patronymic.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.patronymic.$error && $v.form.patronymic.$dirty">
                   <span class="form__error" v-if="!$v.form.patronymic.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -56,7 +66,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Дата рождения*:</span>
-                  <input type = "text" v-model="$v.form.birthdate.$model">
+                  <input type = "text"
+                    v-model="$v.form.birthdate.$model"
+                    :class = "{ 'form__input__error': $v.form.birthdate.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.birthdate.$error && $v.form.birthdate.$dirty">
                   <span class="form__error" v-if="!$v.form.birthdate.requiredCheck">Поле обязательно для заполнения</span>
@@ -66,7 +79,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Номер телефона*:</span>
-                  <input type = "text" v-model="$v.form.phone.$model">
+                  <input type = "text"
+                    v-model="$v.form.phone.$model"
+                    :class = "{ 'form__input__error': $v.form.phone.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.phone.$error && $v.form.phone.$dirty">
                   <span class="form__error" v-if="!$v.form.phone.requiredCheck">Поле обязательно для заполнения</span>
@@ -127,7 +143,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Индекс:</span>
-                  <input type = "text" v-model.trim="$v.form.postcode.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.postcode.$model"
+                    :class = "{ 'form__input__error': $v.form.postcode.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.postcode.$error && $v.form.postcode.$dirty">
                   <span class="form__error" v-if="!$v.form.postcode.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -136,7 +155,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Страна:</span>
-                  <input type = "text" v-model.trim="$v.form.country.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.country.$model"
+                    :class = "{ 'form__input__error': $v.form.country.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.country.$error && $v.form.country.$dirty">
                   <span class="form__error" v-if="!$v.form.country.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -146,7 +168,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Область:</span>
-                  <input type = "text" v-model.trim="$v.form.region.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.region.$model"
+                    :class = "{ 'form__input__error': $v.form.region.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.region.$error && $v.form.region.$dirty">
                   <span class="form__error" v-if="!$v.form.region.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -156,7 +181,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Город*:</span>
-                  <input type = "text" v-model.trim="$v.form.city.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.city.$model"
+                    :class = "{ 'form__input__error': $v.form.city.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.city.$error && $v.form.city.$dirty">
                   <span class="form__error" v-if="!$v.form.city.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -167,7 +195,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Улица:</span>
-                  <input type = "text" v-model.trim="$v.form.street.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.street.$model"
+                    :class = "{ 'form__input__error': $v.form.street.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.street.$error && $v.form.street.$dirty">
                   <span class="form__error" v-if="!$v.form.street.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -177,7 +208,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Дом:</span>
-                  <input type = "text" v-model.trim="$v.form.house.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.house.$model"
+                    :class = "{ 'form__input__error': $v.form.house.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.house.$error && $v.form.house.$dirty">
                   <span class="form__error" v-if="!$v.form.house.houseCheck">Номер должен начинаться с цифры</span>
@@ -204,7 +238,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Серия:</span>
-                  <input type = "text" v-model.trim="$v.form.docSeries.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.docSeries.$model"
+                    :class = "{ 'form__input__error': $v.form.docSeries.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.docSeries.$error && $v.form.docSeries.$dirty">
                   <span class="form__error" v-if="!$v.form.docSeries.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -213,7 +250,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Номер:</span>
-                  <input type = "text" v-model.trim="$v.form.docNumber.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.docNumber.$model"
+                    :class = "{ 'form__input__error': $v.form.docNumber.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.docNumber.$error && $v.form.docNumber.$dirty">
                   <span class="form__error" v-if="!$v.form.docNumber.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -222,7 +262,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Кем выдан:</span>
-                  <input type = "text" v-model.trim="$v.form.docIssuedBy.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.docIssuedBy.$model"
+                    :class = "{ 'form__input__error': $v.form.docIssuedBy.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.docIssuedBy.$error && $v.form.docIssuedBy.$dirty">
                   <span class="form__error" v-if="!$v.form.docIssuedBy.maxLength20">Количество символов не более 20 и не менее 2</span>
@@ -232,7 +275,10 @@
               <div class = "form__block__item">
                 <label class = "form__block__item__row">
                   <span>Дата выдачи*:</span>
-                  <input type = "text" v-model.trim="$v.form.docDateOfIssue.$model">
+                  <input type = "text"
+                    v-model.trim="$v.form.docDateOfIssue.$model"
+                    :class = "{ 'form__input__error': $v.form.docDateOfIssue.$error }"
+                  >
                 </label>
                 <div v-if="$v.form.docDateOfIssue.$error && $v.form.docDateOfIssue.$dirty">
                   <span class="form__error" v-if="!$v.form.docDateOfIssue.requiredCheck">Поле обязательно для заполнения</span>
@@ -246,6 +292,9 @@
           </div>
         </div>
       </form>
+      <div class = "form__pop-up" :class = "{ 'form__pop-up_active':successCreated }">
+        Новый клиент успешно создан
+      </div>
     </div>
   </body>
   <script src="index.js"></script>

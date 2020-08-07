@@ -1,6 +1,6 @@
 Vue.use(window.vuelidate.default)
 
-Vue.config.devtools = true;
+//Vue.config.devtools = true;
 
 //Validators
 const requiredCheck = (val) => {
@@ -62,7 +62,8 @@ var app = new Vue({
       docNumber: '',
       docIssuedBy: '',
       docDateOfIssue: '',
-    }
+    },
+    successCreated: false,
   },
   validations: {
     form: {
@@ -138,7 +139,10 @@ var app = new Vue({
     submit() {
       this.$v.form.$touch();
       if(this.$v.form.$error) return;
-      alert("Новый клиент создан");
+      this.successCreated = true;
+      setTimeout(() => {
+        this.successCreated = false;
+      }, 3000);
     }
   },
 })
