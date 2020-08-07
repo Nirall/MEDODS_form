@@ -7,4 +7,4 @@ For local installation SASS use "npm install".
 
 To compile a SASS style file use "npm run build".
 
-[Result page](https://nirall.github.io/MEDODS_form/src/index.html)
+[Result page](https://nirall.github.io/MEDODS_form_Vue/src/index.html)
